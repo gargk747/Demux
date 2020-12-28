@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(questionsAdapter);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Questions");
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
