@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "762210549576",
+    "project_id": "demux-ebebc",
+    "storage_bucket": "demux-ebebc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762210549576:android:4a4a8ccee082af29d93d7d",
+        "android_client_info": {
+          "package_name": "com.example.demux"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "762210549576-bqgihmqnsh3rf2j11htaft28hsa9s3lm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0Mi2ZmoqYmxpm_zxBi6InuYEq9gMc8_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "762210549576-bqgihmqnsh3rf2j11htaft28hsa9s3lm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
