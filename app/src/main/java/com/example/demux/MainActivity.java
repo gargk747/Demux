@@ -1,5 +1,6 @@
 package com.example.demux;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -18,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     QuestionsAdapter questionsAdapter;
+    ArrayList<QuestionsItems> questionsItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,18 +48,39 @@ public class MainActivity extends AppCompatActivity {
         college.add("MNIT Jaipur");
 
 
-        ArrayList<QuestionsItems> questionsItems=new ArrayList<>();
-        questionsItems.add(new QuestionsItems("Two SUM","Easy",true,"Internship",
-                "Online","ahahahahahhahahahahahaha",20,topics,company,college));
-        questionsItems.add(new QuestionsItems("Factorial","Hard",true,"Internship",
-                "Online","ahahahahahhahahahahahaha",20,topics,company,college));
-        questionsItems.add(new QuestionsItems("Middle Element","Medium",true,"Internship",
-                "Online","ahahahahahhahahahahahaha",20,topics,company,college));
+//        questionsItems.add(new QuestionsItems("Two SUM","Easy",true,"Internship",
+//                "Online","ahahahahahhahahahahahaha",20,topics,company,college));
+//        questionsItems.add(new QuestionsItems("Factorial","Hard",true,"Internship",
+//                "Online","ahahahahahhahahahahahaha",20,topics,company,college));
+//        questionsItems.add(new QuestionsItems("Middle Element","Medium",true,"Internship",
+//                "Online","ahahahahahhahahahahahaha",20,topics,company,college));
 
         recyclerView=findViewById(R.id.MainRecyclerView);
-        questionsAdapter=new QuestionsAdapter(questionsItems);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(questionsAdapter);
+//        questionsAdapter=new QuestionsAdapter(questionsItems);
+//        recyclerView.setAdapter(questionsAdapter);
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Questions");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                {
+                    questionsItems = new ArrayList<QuestionsItems>();
+                    QuestionsItems q=dataSnapshot.getValue(QuestionsItems.class);
+                    questionsItems.add(q);
+                }
+                questionsAdapter=new QuestionsAdapter(questionsItems);
+                recyclerView.setAdapter(questionsAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this,"Opps",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override

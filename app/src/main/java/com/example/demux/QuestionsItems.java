@@ -1,108 +1,113 @@
 package com.example.demux;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class QuestionsItems {
 
-    private String Title, Difficulty;
-    private boolean Trending;
-    private  String JobNature, InterviewType, FullQuestion;
-    private int Frequency;
-    private ArrayList<String> TopicTags, Company, College;
+    public QuestionsItems(){
+
+    }
+
+    private String title, difficulty;
+    private boolean trending;
+    private  String jobNature, interviewType, fullQuestion;
+    private int frequency;
+    private HashMap<String,String> topicTag, company, college;
 
     public QuestionsItems(String title, String difficulty, boolean trending,
                           String jobNature, String interviewType, String fullQuestion,
-                          int frequency, ArrayList<String> topicTags,
-                          ArrayList<String> company, ArrayList<String> college) {
-        Title = title;
-        Difficulty = difficulty;
-        Trending = trending;
-        JobNature = jobNature;
-        InterviewType = interviewType;
-        FullQuestion = fullQuestion;
-        Frequency = frequency;
-        TopicTags = topicTags;
-        Company = company;
-        College = college;
+                          int frequency, HashMap<String,String> topicTag,
+                          HashMap<String,String> company, HashMap<String,String> college) {
+        this.title = title;
+        this.difficulty = difficulty;
+        this.trending = trending;
+        this.jobNature = jobNature;
+        this.interviewType = interviewType;
+        this.fullQuestion = fullQuestion;
+        this.frequency = frequency;
+        this.topicTag = topicTag;
+        this.company = company;
+        this.college = college;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getDifficulty() {
-        return Difficulty;
+        return difficulty;
     }
 
     public void setDifficulty(String difficulty) {
-        Difficulty = difficulty;
+        this.difficulty = difficulty;
     }
 
     public boolean isTrending() {
-        return Trending;
+        return trending;
     }
 
     public void setTrending(boolean trending) {
-        Trending = trending;
+        this.trending = trending;
     }
 
     public String getJobNature() {
-        return JobNature;
+        return jobNature;
     }
 
     public void setJobNature(String jobNature) {
-        JobNature = jobNature;
+        this.jobNature = jobNature;
     }
 
     public String getInterviewType() {
-        return InterviewType;
+        return interviewType;
     }
 
     public void setInterviewType(String interviewType) {
-        InterviewType = interviewType;
+        this.interviewType = interviewType;
     }
 
     public String getFullQuestion() {
-        return FullQuestion;
+        return fullQuestion;
     }
 
     public void setFullQuestion(String fullQuestion) {
-        FullQuestion = fullQuestion;
+        this.fullQuestion = fullQuestion;
     }
 
     public int getFrequency() {
-        return Frequency;
+        return frequency;
     }
 
     public void setFrequency(int frequency) {
-        Frequency = frequency;
+        this.frequency = frequency;
     }
 
-    public ArrayList<String> getTopicTags() {
-        return TopicTags;
+    public HashMap<String,String> getTopicTag() {
+        return topicTag;
     }
 
-    public void setTopicTags(ArrayList<String> topicTags) {
-        TopicTags = topicTags;
+    public void setTopicTag(HashMap<String,String> topicTag) {
+        this.topicTag = topicTag;
     }
 
-    public ArrayList<String> getCompany() {
-        return Company;
+    public HashMap<String,String> getCompany() {
+        return company;
     }
 
-    public void setCompany(ArrayList<String> company) {
-        Company = company;
+    public void setCompany(HashMap<String,String> company) {
+        this.company = company;
     }
 
-    public ArrayList<String> getCollege() {
-        return College;
+    public HashMap<String,String> getCollege() {
+        return college;
     }
 
-    public void setCollege(ArrayList<String> college) {
-        College = college;
+    public void setCollege(HashMap<String,String> college) {
+        this.college = college;
     }
 }
