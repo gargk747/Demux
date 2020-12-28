@@ -42,6 +42,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
         }
     }
 
+
     @Override
     public int getItemCount() {
         return questionsItemsArrayList.size();
