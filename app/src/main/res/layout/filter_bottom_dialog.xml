@@ -29,11 +29,12 @@
             android:text="Difficulty level"
             android:textSize="18dp"
             android:layout_marginRight="5dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1.25"/>
         <Spinner
+            android:id="@+id/spinner1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"/>
+            android:layout_weight="1.75"/>
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -48,11 +49,12 @@
             android:text="Companies"
             android:textSize="18dp"
             android:layout_marginRight="5dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1.25"/>
         <Spinner
+            android:id="@+id/spinner2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"/>
+            android:layout_weight="1.75"/>
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -67,11 +69,12 @@
             android:text="College"
             android:textSize="18dp"
             android:layout_marginRight="5dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1.25"/>
         <Spinner
+            android:id="@+id/spinner3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"/>
+            android:layout_weight="1.75"/>
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -86,11 +89,52 @@
             android:text="Topic"
             android:textSize="18dp"
             android:layout_marginRight="5dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1.25"/>
         <Spinner
+            android:id="@+id/spinner4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"/>
+            android:layout_weight="1.75"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Job Nature"
+            android:textSize="18dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1.25"/>
+        <Spinner
+            android:id="@+id/spinner5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.75"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Trending"
+            android:textSize="18dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1.25"/>
+        <Spinner
+            android:id="@+id/spinner6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.75"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -98,18 +142,26 @@
         android:weightSum="2"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/apply"
             android:layout_width="0dp"
-            android:layout_margin="15dp"
+            android:layout_margin="10dp"
             android:layout_height="wrap_content"
             android:text="APPLY"
             android:layout_weight="1"/>
         <Button
+            android:id="@+id/cancel"
             android:layout_width="0dp"
-            android:layout_margin="15dp"
+            android:layout_margin="10dp"
             android:layout_height="wrap_content"
             android:text="CANCEl"
             android:layout_weight="1"/>
     </LinearLayout>
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Clear all filters"/>
 
 
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -37,6 +38,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
     public void onBindViewHolder(@NonNull QuestionsAdapter.MyViewHolder holder, int position) {
         holder.QuestionTitle.setText(questionsItemsArrayList.get(position).getTitle());
         holder.QuestionDifficulty.setText(questionsItemsArrayList.get(position).getDifficulty());
+
         switch (questionsItemsArrayList.get(position).getDifficulty()) {
             case "Easy":
                 holder.QuestionDifficulty.setBackgroundResource(R.drawable.difficulty_bg_easy);

@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -50,19 +52,8 @@ public class MainActivity extends AppCompatActivity {
         college.add("IIT Mumabai");
         college.add("MNIT Jaipur");
 
-
-//        questionsItems.add(new QuestionsItems("Two SUM","Easy",true,"Internship",
-//                "Online","ahahahahahhahahahahahaha",20,topics,company,college));
-//        questionsItems.add(new QuestionsItems("Factorial","Hard",true,"Internship",
-//                "Online","ahahahahahhahahahahahaha",20,topics,company,college));
-//        questionsItems.add(new QuestionsItems("Middle Element","Medium",true,"Internship",
-//                "Online","ahahahahahhahahahahahaha",20,topics,company,college));
-
         recyclerView=findViewById(R.id.MainRecyclerView);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        questionsAdapter=new QuestionsAdapter(questionsItems);
-//        recyclerView.setAdapter(questionsAdapter);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Questions");
 
@@ -100,7 +91,40 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 if(item.getTitle().toString().equals("Filter")){
                     View sheetView= LayoutInflater.from(getApplicationContext()).inflate(R.layout.filter_bottom_dialog,(ViewGroup) findViewById(R.id.filter_sheet));
+
+                    Spinner difficultySpinner= sheetView.findViewById(R.id.spinner1);
+                    ArrayAdapter<CharSequence> adapter1= ArrayAdapter.createFromResource(getApplicationContext(),R.array.Difficulty,android.R.layout.simple_spinner_item);
+                    adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    difficultySpinner.setAdapter(adapter1);
+
+                    Spinner companiesSpinner= sheetView.findViewById(R.id.spinner2);
+                    ArrayAdapter<CharSequence> adapter2= ArrayAdapter.createFromResource(getApplicationContext(),R.array.Companies,android.R.layout.simple_spinner_item);
+                    adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    companiesSpinner.setAdapter(adapter2);
+
+                    Spinner collegeSpinner= sheetView.findViewById(R.id.spinner3);
+                    ArrayAdapter<CharSequence> adapter3= ArrayAdapter.createFromResource(getApplicationContext(),R.array.College,android.R.layout.simple_spinner_item);
+                    adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    collegeSpinner.setAdapter(adapter3);
+
+                    Spinner topicSpinner= sheetView.findViewById(R.id.spinner4);
+                    ArrayAdapter<CharSequence> adapter4= ArrayAdapter.createFromResource(getApplicationContext(),R.array.Topic,android.R.layout.simple_spinner_item);
+                    adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    topicSpinner.setAdapter(adapter4);
+
+                    Spinner jobNatureSpinner= sheetView.findViewById(R.id.spinner5);
+                    ArrayAdapter<CharSequence> adapter5= ArrayAdapter.createFromResource(getApplicationContext(),R.array.JobNature,android.R.layout.simple_spinner_item);
+                    adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    jobNatureSpinner.setAdapter(adapter5);
+
+                    Spinner trendingSpinner= sheetView.findViewById(R.id.spinner6);
+                    ArrayAdapter<CharSequence> adapter6= ArrayAdapter.createFromResource(getApplicationContext(),R.array.Trending,android.R.layout.simple_spinner_item);
+                    adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    trendingSpinner.setAdapter(adapter6);
+
+
                     bottomSheetDialog.setContentView(sheetView);
+                    bottomSheetDialog.setCanceledOnTouchOutside(false);
                     bottomSheetDialog.show();
                 }
                 return true;

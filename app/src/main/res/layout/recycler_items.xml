@@ -68,6 +68,7 @@
             android:layout_marginStart="15dp"
             android:layout_alignParentRight="true" />
 
+
         <TextView
             android:id="@+id/item_company"
             android:layout_below="@id/item_tagDetails"

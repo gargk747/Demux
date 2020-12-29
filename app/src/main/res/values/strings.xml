@@ -1,3 +1,42 @@
 <resources>
     <string name="app_name">Demux</string>
+
+    <string-array name="Difficulty">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+    <string-array name="Companies">
+        <item>Google</item>
+        <item>Facebook</item>
+        <item>Amazon</item>
+        <item>Goldman Sachs</item>
+        <item>DE Shaw</item>
+        <item>Arcesium</item>
+    </string-array>
+    <string-array name="College">
+        <item>IIT delhi</item>
+        <item>IIT mumbai</item>
+        <item>NIT Trichy</item>
+        <item>NIT Warangal</item>
+        <item>VIT Vellore</item>
+        <item>NIT delhi</item>
+    </string-array>
+    <string-array name="Topic">
+        <item>Array</item>
+        <item>Linked List</item>
+        <item>Math</item>
+        <item>Hash Table</item>
+        <item>Pointers</item>
+        <item>Strings</item>
+        <item>List</item>
+    </string-array>
+    <string-array name="JobNature">
+        <item>Internship</item>
+        <item>Placement</item>
+    </string-array>
+    <string-array name="Trending">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
 </resources>
