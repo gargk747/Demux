@@ -6,19 +6,21 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     QuestionsAdapter questionsAdapter;
     ArrayList<QuestionsItems> questionsItems;
+    BottomSheetDialog bottomSheetDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,9 +69,10 @@ public class MainActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                questionsItems = new ArrayList<QuestionsItems>();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
-                    questionsItems = new ArrayList<QuestionsItems>();
+
                     QuestionsItems q=dataSnapshot.getValue(QuestionsItems.class);
                     questionsItems.add(q);
                 }
@@ -87,8 +91,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();
-        menuInflater.inflate(R.menu.search_menu,menu);
+        menuInflater.inflate(R.menu.tool_menu,menu);
         MenuItem searchItem= menu.findItem(R.id.searchView);
+        MenuItem filterItem=menu.findItem(R.id.filterView);
+        bottomSheetDialog= new BottomSheetDialog(MainActivity.this, R.style.BottomSheetTheme);
+        filterItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if(item.getTitle().toString().equals("Filter")){
+                    View sheetView= LayoutInflater.from(getApplicationContext()).inflate(R.layout.filter_bottom_dialog,(ViewGroup) findViewById(R.id.filter_sheet));
+                    bottomSheetDialog.setContentView(sheetView);
+                    bottomSheetDialog.show();
+                }
+                return true;
+            }
+        });
         SearchView searchView= (SearchView) searchItem.getActionView();
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
 

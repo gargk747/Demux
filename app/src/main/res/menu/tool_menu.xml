@@ -7,5 +7,9 @@
         android:title="Search"
         android:icon="@drawable/ic_search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+    <item android:id="@+id/filterView"
+        app:showAsAction="always"
+        android:title="Filter"
+        android:icon="@drawable/ic_filter"/>
 
 </menu>

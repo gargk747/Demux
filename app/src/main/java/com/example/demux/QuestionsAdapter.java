@@ -1,13 +1,16 @@
 package com.example.demux;
 
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -29,17 +32,42 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
         return new MyViewHolder(v);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull QuestionsAdapter.MyViewHolder holder, int position) {
         holder.QuestionTitle.setText(questionsItemsArrayList.get(position).getTitle());
         holder.QuestionDifficulty.setText(questionsItemsArrayList.get(position).getDifficulty());
-        if(questionsItemsArrayList.get(position).getDifficulty()=="Easy"){
-            holder.QuestionDifficulty.setBackgroundResource(R.drawable.difficulty_bg_easy);
-        }else if(questionsItemsArrayList.get(position).getDifficulty()=="Medium"){
-            holder.QuestionDifficulty.setBackgroundResource(R.drawable.difficulty_bg_medium);
-        }else if(questionsItemsArrayList.get(position).getDifficulty()=="Hard"){
-            holder.QuestionDifficulty.setBackgroundResource(R.drawable.difficulty_bg_hard);
+        switch (questionsItemsArrayList.get(position).getDifficulty()) {
+            case "Easy":
+                holder.QuestionDifficulty.setBackgroundResource(R.drawable.difficulty_bg_easy);
+                break;
+            case "Medium":
+                holder.QuestionDifficulty.setBackgroundResource(R.drawable.difficulty_bg_medium);
+                break;
+            case "Hard":
+                holder.QuestionDifficulty.setBackgroundResource(R.drawable.difficulty_bg_hard);
+                break;
         }
+        holder.QuestionFrequency.setProgress(questionsItemsArrayList.get(position).getFrequency(),true);
+        String company1=questionsItemsArrayList.get(position).getCompany().get("first");
+        String company2=questionsItemsArrayList.get(position).getCompany().get("second");
+        holder.QuestionCompany.setText(company1+" , "+company2);
+
+        String college1=questionsItemsArrayList.get(position).getCollege().get("first");
+        String college2=questionsItemsArrayList.get(position).getCollege().get("second");
+        holder.QuestionCollege.setText(college1+" , "+college2);
+
+        String topic1=questionsItemsArrayList.get(position).getTopicTag().get("first");
+        String topic2=questionsItemsArrayList.get(position).getTopicTag().get("second");
+        holder.QuestionTags.setText(topic1+" , "+topic2);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
 
@@ -53,11 +81,17 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
         TextView QuestionTitle;
         TextView QuestionDifficulty;
         TextView QuestionTags;
+        TextView QuestionCompany;
+        TextView QuestionCollege;
+        ProgressBar QuestionFrequency;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             QuestionTitle=itemView.findViewById(R.id.item_title);
             QuestionDifficulty=itemView.findViewById(R.id.item_difficulty);
             QuestionTags=itemView.findViewById(R.id.item_tagDetails);
+            QuestionCollege=itemView.findViewById(R.id.item_CollegeDetails);
+            QuestionCompany=itemView.findViewById(R.id.item_CompanyDetails);
+            QuestionFrequency=itemView.findViewById(R.id.item_frequency);
         }
     }
 
