@@ -14,7 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -33,24 +35,17 @@ public class MainActivity extends AppCompatActivity {
     QuestionsAdapter questionsAdapter;
     ArrayList<QuestionsItems> questionsItems;
     BottomSheetDialog bottomSheetDialog;
+    private String difficulty;
+    private String company;
+    private String college;
+    private String topic;
+    private String trending;
+    private String jobNature;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<String> topics=new ArrayList<>();
-        topics.add(0,"Array");
-        topics.add("Hash Tables");
-
-        ArrayList<String> company=new ArrayList<>();
-        company.add(0,"Google");
-        company.add("Facebook");
-        company.add("Amazon");
-
-        ArrayList<String> college=new ArrayList<>();
-        college.add(0,"IIT delhi");
-        college.add("IIT Mumabai");
-        college.add("MNIT Jaipur");
 
         recyclerView=findViewById(R.id.MainRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -86,48 +81,135 @@ public class MainActivity extends AppCompatActivity {
         MenuItem searchItem= menu.findItem(R.id.searchView);
         MenuItem filterItem=menu.findItem(R.id.filterView);
         bottomSheetDialog= new BottomSheetDialog(MainActivity.this, R.style.BottomSheetTheme);
+
+
         filterItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if(item.getTitle().toString().equals("Filter")){
                     View sheetView= LayoutInflater.from(getApplicationContext()).inflate(R.layout.filter_bottom_dialog,(ViewGroup) findViewById(R.id.filter_sheet));
+                    bottomSheetDialog.setContentView(sheetView);
+                    bottomSheetDialog.setCanceledOnTouchOutside(false);
+                    bottomSheetDialog.show();
 
                     Spinner difficultySpinner= sheetView.findViewById(R.id.spinner1);
                     ArrayAdapter<CharSequence> adapter1= ArrayAdapter.createFromResource(getApplicationContext(),R.array.Difficulty,android.R.layout.simple_spinner_item);
                     adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     difficultySpinner.setAdapter(adapter1);
+                    difficultySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            difficulty =parent.getItemAtPosition(position).toString();
+                            questionsAdapter.getFilter().filter(difficulty);
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
 
                     Spinner companiesSpinner= sheetView.findViewById(R.id.spinner2);
                     ArrayAdapter<CharSequence> adapter2= ArrayAdapter.createFromResource(getApplicationContext(),R.array.Companies,android.R.layout.simple_spinner_item);
                     adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     companiesSpinner.setAdapter(adapter2);
+                    companiesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            company =parent.getItemAtPosition(position).toString();
+                            questionsAdapter.getFilter().filter(company);
+                            //bottomSheetDialog.cancel();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
 
                     Spinner collegeSpinner= sheetView.findViewById(R.id.spinner3);
                     ArrayAdapter<CharSequence> adapter3= ArrayAdapter.createFromResource(getApplicationContext(),R.array.College,android.R.layout.simple_spinner_item);
                     adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     collegeSpinner.setAdapter(adapter3);
+                    collegeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            college =parent.getItemAtPosition(position).toString();
+                            questionsAdapter.getFilter().filter(college);
+                            //bottomSheetDialog.cancel();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
 
                     Spinner topicSpinner= sheetView.findViewById(R.id.spinner4);
                     ArrayAdapter<CharSequence> adapter4= ArrayAdapter.createFromResource(getApplicationContext(),R.array.Topic,android.R.layout.simple_spinner_item);
                     adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     topicSpinner.setAdapter(adapter4);
+                    topicSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            topic =parent.getItemAtPosition(position).toString();
+                            questionsAdapter.getFilter().filter(topic);
+                            //bottomSheetDialog.cancel();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
 
                     Spinner jobNatureSpinner= sheetView.findViewById(R.id.spinner5);
                     ArrayAdapter<CharSequence> adapter5= ArrayAdapter.createFromResource(getApplicationContext(),R.array.JobNature,android.R.layout.simple_spinner_item);
                     adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     jobNatureSpinner.setAdapter(adapter5);
+                    jobNatureSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            jobNature =parent.getItemAtPosition(position).toString();
+                            questionsAdapter.getFilter().filter(jobNature);
+                            //bottomSheetDialog.cancel();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
 
                     Spinner trendingSpinner= sheetView.findViewById(R.id.spinner6);
                     ArrayAdapter<CharSequence> adapter6= ArrayAdapter.createFromResource(getApplicationContext(),R.array.Trending,android.R.layout.simple_spinner_item);
                     adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     trendingSpinner.setAdapter(adapter6);
+                    trendingSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            trending =parent.getItemAtPosition(position).toString();
+                            questionsAdapter.getFilter().filter(trending);
+                        }
 
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
 
-                    bottomSheetDialog.setContentView(sheetView);
-                    bottomSheetDialog.setCanceledOnTouchOutside(false);
+                        }
+                    });
+                    Button clear=sheetView.findViewById(R.id.clear);
+                    clear.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            questionsAdapter.getFilter().filter(null);
+                            Toast.makeText(MainActivity.this,"All filters cleared",Toast.LENGTH_SHORT).show();
+                            bottomSheetDialog.cancel();
+                        }
+                    });
+
                     bottomSheetDialog.show();
                 }
-                return true;
+                return false;
             }
         });
         SearchView searchView= (SearchView) searchItem.getActionView();

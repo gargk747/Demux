@@ -136,26 +136,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1.75"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/apply"
-            android:layout_width="0dp"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"
-            android:text="APPLY"
-            android:layout_weight="1"/>
-        <Button
-            android:id="@+id/cancel"
-            android:layout_width="0dp"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"
-            android:text="CANCEl"
-            android:layout_weight="1"/>
-    </LinearLayout>
+
     <Button
         android:id="@+id/clear"
         android:layout_width="wrap_content"

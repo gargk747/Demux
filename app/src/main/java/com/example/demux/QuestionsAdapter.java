@@ -113,7 +113,13 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for (QuestionsItems items : questionsItemsArrayListFull){
-                    if(items.getTitle().toLowerCase().contains(filterPattern)){
+
+                    if(items.getTitle().toLowerCase().contains(filterPattern)||
+                            items.getDifficulty().toLowerCase().contains(filterPattern)||
+                            items.getCollege().toString().toLowerCase().contains(filterPattern) ||
+                            items.getTopicTag().toString().toLowerCase().contains(filterPattern) ||
+                            items.getCompany().toString().toLowerCase().contains(filterPattern)||
+                            items.getJobNature().toString().toLowerCase().contains(filterPattern)){
                         filteredList.add(items);
                     }
                 }
