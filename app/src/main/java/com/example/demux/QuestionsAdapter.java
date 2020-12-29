@@ -1,5 +1,7 @@
 package com.example.demux;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
 
     private ArrayList<QuestionsItems> questionsItemsArrayList;
     private ArrayList<QuestionsItems> questionsItemsArrayListFull;
+    private Context mContext;
 
     public QuestionsAdapter(ArrayList<QuestionsItems> questionsItemsArrayList) {
         this.questionsItemsArrayList = questionsItemsArrayList;
@@ -29,13 +32,14 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
     @NonNull
     @Override
     public QuestionsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_items,parent,false);
+        mContext=parent.getContext();
+        View v= LayoutInflater.from(mContext).inflate(R.layout.recycler_items,parent,false);
         return new MyViewHolder(v);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull QuestionsAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull QuestionsAdapter.MyViewHolder holder, final int position) {
         holder.QuestionTitle.setText(questionsItemsArrayList.get(position).getTitle());
         holder.QuestionDifficulty.setText(questionsItemsArrayList.get(position).getDifficulty());
 
@@ -51,22 +55,45 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
                 break;
         }
         holder.QuestionFrequency.setProgress(questionsItemsArrayList.get(position).getFrequency(),true);
-        String company1=questionsItemsArrayList.get(position).getCompany().get("first");
-        String company2=questionsItemsArrayList.get(position).getCompany().get("second");
+        final String company1=questionsItemsArrayList.get(position).getCompany().get("first");
+        final String company2=questionsItemsArrayList.get(position).getCompany().get("second");
         holder.QuestionCompany.setText(company1+" , "+company2);
 
-        String college1=questionsItemsArrayList.get(position).getCollege().get("first");
-        String college2=questionsItemsArrayList.get(position).getCollege().get("second");
+        final String college1=questionsItemsArrayList.get(position).getCollege().get("first");
+        final String college2=questionsItemsArrayList.get(position).getCollege().get("second");
         holder.QuestionCollege.setText(college1+" , "+college2);
 
-        String topic1=questionsItemsArrayList.get(position).getTopicTag().get("first");
-        String topic2=questionsItemsArrayList.get(position).getTopicTag().get("second");
+        final String topic1=questionsItemsArrayList.get(position).getTopicTag().get("first");
+        final String topic2=questionsItemsArrayList.get(position).getTopicTag().get("second");
         holder.QuestionTags.setText(topic1+" , "+topic2);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String fullquestion=questionsItemsArrayList.get(position).getFullQuestion();
+                String college=college1+" , "+college2;
+                String company=company1+" , "+company2;
+                String difficulty=questionsItemsArrayList.get(position).getDifficulty();
+                String interviewtype=questionsItemsArrayList.get(position).getInterviewType();
+                String jobnature=questionsItemsArrayList.get(position).getJobNature();
+                String topic=topic1+" , "+topic2;
+                String trending;
+                if(questionsItemsArrayList.get(position).isTrending()){
+                    trending="Yes";
+                }else{
+                    trending="No";
+                }
 
+                Intent intent= new Intent(mContext,DetailsActivity.class);
+                intent.putExtra("fullquestion",fullquestion);
+                intent.putExtra("college",college);
+                intent.putExtra("company",company);
+                intent.putExtra("difficulty",difficulty);
+                intent.putExtra("interviewtype",interviewtype);
+                intent.putExtra("jobnature",jobnature);
+                intent.putExtra("topic",topic);
+                intent.putExtra("trending",trending);
+                mContext.startActivity(intent);
             }
         });
 

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".DetailsActivity">
+    
+    <ImageButton
+        android:id="@+id/back"
+        android:background="@drawable/back"
+        android:layout_width="50dp"
+        android:onClick="back"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:id="@+id/details_fullquestion"
+        android:layout_below="@id/back"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Question"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_college"
+        android:layout_below="@id/details_fullquestion"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Colleges : "
+        android:textColor="#717171"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_collegeDetails"
+        android:layout_below="@id/details_fullquestion"
+        android:layout_toRightOf="@id/details_college"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="College Details"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_company"
+        android:layout_below="@id/details_collegeDetails"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Company : "
+        android:textColor="#717171"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_companyDetails"
+        android:layout_below="@id/details_collegeDetails"
+        android:layout_toRightOf="@id/details_company"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Company Details"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_difficulty"
+        android:layout_below="@id/details_companyDetails"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Difficulty : "
+        android:textColor="#717171"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_DiffcultyDetails"
+        android:layout_below="@id/details_companyDetails"
+        android:layout_toRightOf="@id/details_difficulty"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Easy"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_interviewType"
+        android:layout_below="@id/details_DiffcultyDetails"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interview Type : "
+        android:textColor="#717171"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_interviewTypeDetails"
+        android:layout_below="@id/details_DiffcultyDetails"
+        android:layout_toRightOf="@id/details_interviewType"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Online"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_jobNature"
+        android:layout_below="@id/details_interviewTypeDetails"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Job Nature : "
+        android:textColor="#717171"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_jobNatureDetails"
+        android:layout_below="@id/details_interviewTypeDetails"
+        android:layout_toRightOf="@id/details_jobNature"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Internship"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_topic"
+        android:layout_below="@id/details_jobNatureDetails"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Topics : "
+        android:textColor="#717171"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_topicDetails"
+        android:layout_below="@id/details_jobNatureDetails"
+        android:layout_toRightOf="@id/details_topic"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Array"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_trending"
+        android:layout_below="@id/details_topicDetails"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trending : "
+        android:textColor="#717171"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+    <TextView
+        android:id="@+id/details_trendingDetails"
+        android:layout_below="@id/details_topicDetails"
+        android:layout_toRightOf="@id/details_trending"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp" />
+</RelativeLayout>
